@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .aluno {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 300px;
+            margin: auto;
+        }
+        button {
+            margin: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .presente {
+            background-color: lightgreen;
+        }
+        .faltou {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chamada Escolar</h1>
+    <div id="lista"></div>
+
+    <script>
+        const alunos = [
+            "Ana Beatriz Silva", "Arthur Mendes", "Beatriz Oliveira", "Caio Santos", "Camila Ferreira", 
+            "Daniel Souza", "Eduardo Lima", "Fernanda Costa", "Gabriel Martins", "Giovanna Rocha", 
+            "Helena Alves", "Henrique Barbosa", "Isabela Nunes", "João Pedro Carvalho", "Julia Ribeiro", 
+            "Kauã Almeida", "Larissa Monteiro", "Lucas Pereira", "Mariana Duarte", "Matheus Gonçalves", 
+            "Rafaela Teixeira", "Samuel Batista", "Sophia Andrade", "Thiago Vasconcelos", "Vitória Campos", 
+            "André Luiz Castro", "Bianca Moreira", "Carlos Henrique Neves", "Diego Farias", 
+            "Emanuelly Cardoso", "Felipe Moura", "Yasmin Brito"
+        ];
+
+        const lista = document.getElementById("lista");
+        alunos.forEach(nome => {
+            const div = document.createElement("div");
+            div.classList.add("aluno");
+            div.innerHTML = `<span>${nome}</span> <button onclick="marcar(this, 'presente')">Presente</button> <button onclick="marcar(this, 'faltou')">Faltou</button>`;
+            lista.appendChild(div);
+        });
+
+        function marcar(botao, status) {
+            const div = botao.parentElement;
+            div.classList.remove("presente", "faltou");
+            div.classList.add(status);
+        }
+    </script>
+</body>
+</html>
